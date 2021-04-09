@@ -32,4 +32,24 @@ public class FinderTest {
     public void emptyArrayByStreamTest() throws Exception {
         Finder.byStream( EMPTY_ARRAY );
     }
+
+    @Test
+    public void array1ByForTest() throws Exception {
+        assertEquals( ARRAY_1_EXPECTED, Finder.byFor( ARRAY_1 ) );
+    }
+
+    @Test
+    public void array2ByForTest() throws Exception {
+        assertEquals( ARRAY_2_EXPECTED, Finder.byFor( ARRAY_2 ) );
+    }
+
+    @Test
+    public void array3ByForTest() throws Exception {
+        assertEquals( ARRAY_3_EXPECTED, Finder.byFor( ARRAY_3 ) );
+    }
+
+    @Test( expected = Exception.class )
+    public void emptyArrayByForTest() throws Exception {
+        Finder.byFor( EMPTY_ARRAY );
+    }
 }
