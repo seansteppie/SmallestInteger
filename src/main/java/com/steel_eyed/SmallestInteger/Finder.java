@@ -19,8 +19,9 @@ public class Finder {
 
     public static int byFor( int[] intArray ) throws ZeroLengthException {
         isZeroLength( intArray );
-        int smallest = Integer.MAX_VALUE;
-        for( int value : intArray ) {
+        int smallest = intArray[ 0 ];
+        for( int i = 1; i < intArray.length; i++ ) {
+            int value = intArray[ i ];
             if( value < smallest ) {
                 smallest = value;
             }
