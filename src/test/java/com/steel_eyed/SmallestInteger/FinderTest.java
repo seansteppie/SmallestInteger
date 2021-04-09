@@ -52,4 +52,24 @@ public class FinderTest {
     public void emptyArrayByForTest() throws Exception {
         Finder.byFor( EMPTY_ARRAY );
     }
+
+    @Test
+    public void array1BySortTest() throws Exception {
+        assertEquals( ARRAY_1_EXPECTED, Finder.bySort( ARRAY_1 ) );
+    }
+
+    @Test
+    public void array2BySortTest() throws Exception {
+        assertEquals( ARRAY_2_EXPECTED, Finder.bySort( ARRAY_2 ) );
+    }
+
+    @Test
+    public void array3BySortTest() throws Exception {
+        assertEquals( ARRAY_3_EXPECTED, Finder.bySort( ARRAY_3 ) );
+    }
+
+    @Test( expected = Exception.class )
+    public void emptyArrayBySortTest() throws Exception {
+        Finder.bySort( EMPTY_ARRAY );
+    }
 }

@@ -18,9 +18,7 @@ public class Finder {
     }
 
     public static int byFor( int[] intArray ) throws Exception {
-        if( intArray.length == 0 ) {
-            throw new Exception( "Empty array" );
-        }
+        isZeroLength( intArray );
         int smallest = Integer.MAX_VALUE;
         for( int value : intArray ) {
             if( value < smallest ) {
@@ -28,5 +26,17 @@ public class Finder {
             }
         }
         return smallest;
+    }
+
+    private static void isZeroLength( int[] intArray ) throws Exception {
+        if( intArray.length == 0 ) {
+            throw new Exception( "Empty array" );
+        }
+    }
+
+    public static int bySort( int[] intArray ) throws Exception {
+        isZeroLength( intArray );
+        Arrays.sort( intArray );
+        return intArray[ 0 ];
     }
 }
