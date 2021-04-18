@@ -4,13 +4,19 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
- * Finder
+ * Finder - given a non-empty array of ints, return the smallest value
  * <p>
- *
  * @author Sean Steppie
+ * <p>
  * @version 1.0.0        Date: 09/04/2021     Initial Version
  */
 public class Finder {
+    /**
+     * Use {@link java.util.stream.IntStream IntStream} to
+     * @param intArray - non-empty array of ints
+     * @return smallest int
+     * @throws ZeroLengthException if the array is empty
+     */
     public static int byStream( int[] intArray ) throws ZeroLengthException {
         return IntStream.of( intArray )
                 .min()
