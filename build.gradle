@@ -10,11 +10,10 @@ apply plugin: 'idea'
 apply plugin: 'application'
 
 sourceCompatibility = 11
-version = '1.0.0'
+version = '0.0.1'
 group = 'com.steel_eyed.SmallestIntegerFinder'
 description = "\n${name} Project\nVersion: ${version}"
 mainClassName = "com.steel_eyed.SmallestIntegerFinder.Main"
-def jarInstallDir = "/opt/mine"
 
 /*
  * Use filesystem as local repositories.
@@ -23,60 +22,24 @@ def jarInstallDir = "/opt/mine"
 
 repositories {
     flatDir {
-         dirs  '/usr/share/java'
+         dirs '/usr/share/java'
          dirs '/usr/share/javadoc'
-	 dirs '/usr/share/java/slf4j'
-	 dirs '/usr/share/java/hamcrest'
-	 dirs '/opt/mine'
+    	 dirs '/usr/share/java/hamcrest'
      }
-}
-
-task listJars {
-    doLast {
-        sourceSets.main.compileClasspath.collect{ File file -> println file.name } 
-    }
-}  
-
-task showCache {
-    doLast {
-        sourceSets.main.compileClasspath.collect { println it }
-    }
-}
-
-task writeClasspath {
-    doLast {
-        buildDir.mkdirs()
-        new File(buildDir, "classpath.txt").text = sourceSets.main.compileClasspath.asPath + "\n"
-    }
-}
-
-task copyDependencies(type: Copy) {
-    from configurations.runtime
-    into new File(buildDir, "dependencies")
-}
-
-idea{
-    module {
-        downloadJavadoc = true
-        downloadSources = true
-    }
 }
 
 dependencies {
         implementation 'org.apache.log4j:log4j:1.2.17'
-        implementation 'org.slf4j:slf4j-api:1.7.18'
-        implementation 'com.steel_eyed.General:libGeneral:1.0.+'
         testImplementation 'org.junit:junit:4.+'
         testImplementation 'org.hamcrest:core:1.3-13'
 }
 
 jar {
-    archiveBaseName = "lib" + project.name
-    destinationDirectory = new File( jarInstallDir )
+    archiveBaseName = project.name
     manifest {
         attributes 'Implementation-Title': name,
-                   'Implementation-Version': archiveVersion,
-       		   'Main-Class': mainClassName,
-       		   'Class-Path': sourceSets.main.compileClasspath.collect { it }.join(' ')
+                'Implementation-Version': archiveVersion,
+                'Main-Class': mainClassName,
+                'Class-Path': sourceSets.main.compileClasspath.collect { it }.join(' ')
     }
 }
