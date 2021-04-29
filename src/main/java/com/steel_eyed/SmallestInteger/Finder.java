@@ -12,9 +12,10 @@ import java.util.stream.IntStream;
  */
 public class Finder {
     /**
-     * Use {@link java.util.stream.IntStream IntStream} to
-     * @param intArray - non-empty array of ints
-     * @return smallest int
+     * Use {@link java.util.stream.IntStream IntStream} to find smallest int
+     *
+     * @param intArray non-empty array of ints
+     * @return smallest int from array
      * @throws ZeroLengthException if the array is empty
      */
     public static int byStream( int[] intArray ) throws ZeroLengthException {
@@ -23,6 +24,13 @@ public class Finder {
                 .orElseThrow( () -> new ZeroLengthException( "Invalid int array" ) );
     }
 
+    /**
+     * Use a for loop to find the smallest int in an array
+     *
+     * @param intArray non-empty array of ints
+     * @return smallest int from array
+     * @throws ZeroLengthException
+     */
     public static int byFor( int[] intArray ) throws ZeroLengthException {
         isZeroLength( intArray );
         int smallest = intArray[ 0 ];
@@ -41,6 +49,13 @@ public class Finder {
         }
     }
 
+    /**
+     * Use sort to find the smallest int in an array
+     *
+     * @param intArray
+     * @return smallest int
+     * @throws ZeroLengthException
+     */
     public static int bySort( int[] intArray ) throws ZeroLengthException {
         isZeroLength( intArray );
         Arrays.sort( intArray );
